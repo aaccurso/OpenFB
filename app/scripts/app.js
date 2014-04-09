@@ -17,6 +17,7 @@ angular.module('OpenFBAngular', ['ionic', 'OpenFBAngular.controllers'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
+
   $stateProvider
 
     .state('app', {
@@ -39,7 +40,8 @@ angular.module('OpenFBAngular', ['ionic', 'OpenFBAngular.controllers'])
       url: '/browse',
       views: {
         'menuContent' :{
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/browse.html',
+          controller: 'BrowseCtrl'
         }
       }
     })
@@ -63,6 +65,6 @@ angular.module('OpenFBAngular', ['ionic', 'OpenFBAngular.controllers'])
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/browse');
 });
 

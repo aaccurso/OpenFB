@@ -120,7 +120,7 @@ var openFB = (function() {
         var fbtoken = oauthData['access_token'];
         if (fbtoken) {
             tokenStore['fbtoken'] = fbtoken;
-            if (loginSuccessHandler) loginSuccessHandler();
+            if (loginSuccessHandler) loginSuccessHandler(oauthData);
         } else {
             if (loginErrorHandler) loginErrorHandler();
         }

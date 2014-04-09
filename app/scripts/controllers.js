@@ -4,6 +4,21 @@ angular.module('OpenFBAngular.controllers', [])
 .controller('AppCtrl', function($scope) {
 })
 
+.controller('BrowseCtrl', function($scope, $state, $window, $log){
+	openFB.init('225052281025509', $window.location.origin + '/templates/oauthcallback.html', $window.localStorage);
+
+	$scope.fbLogin = function () {
+		openFB.login('email',
+		  function(oauthData) {
+		      $log.info('Facebook login succeeded', JSON.stringify(oauthData));
+		      $state.go('app.playlists');
+		  },
+		  function() {
+		      $log.info('Facebook login failed');
+	  });
+	}
+})
+
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
